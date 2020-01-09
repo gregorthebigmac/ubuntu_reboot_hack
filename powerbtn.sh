@@ -15,14 +15,14 @@
 # This entire conditional was modified (slightly) to accommodate my reboot-hack. -KG
 if [ -r /usr/share/acpi-support/power-funcs ]; then
 	# This line has been added as part of the reboot-hack. -KG
-        if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
+#        if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
                 . /usr/share/acpi-support/power-funcs
-        else
+#        else
                 # This line has been added as part of the reboot-hack. -KG
-                echo "FAIL"
+#                echo "FAIL"
                 # This line has been added as part of the reboot-hack. -KG
-                exit 191
-        fi
+#                exit 191
+#        fi
 fi
 
 # If logind is running, it already handles power button presses; desktop
@@ -78,5 +78,13 @@ elif test "$XUSER" != "" && test -x /usr/bin/qdbus; then
         fi
 fi
 
+if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
+                . /usr/share/acpi-support/power-funcs
+        else
+                # This line has been added as part of the reboot-hack. -KG
+                echo "FAIL"
+                # This line has been added as part of the reboot-hack. -KG
+                exit 191
+        fi
 # If all else failed, just initiate a plain shutdown.
 /sbin/shutdown -h now "Power button pressed"
