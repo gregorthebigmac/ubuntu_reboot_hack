@@ -1,3 +1,3 @@
 #!/bin/bash
 
-echo "ACPI-SHUTDOWN" > /home/root/ubuntu_reboot_hack/last_shutdown.stat
+echo "ACPI-SHUTDOWN" > /root/ubuntu_reboot_hack/last_shutdown.stat
