@@ -15,8 +15,10 @@
 # This entire conditional was modified (slightly) to accommodate my reboot-hack. -KG
 if [ -r /usr/share/acpi-support/power-funcs ]; then
 	# This line has been added as part of the reboot-hack. -KG
-	. /root/ubuntu_reboot_hack/shutdown_script
-	. /usr/share/acpi-support/power-funcs
+	if . /root/ubuntu_reboot_hack/shutdown_script; then
+	        . /usr/share/acpi-support/power-funcs
+        else echo "FAIL"
+        fi
 fi
 
 # If logind is running, it already handles power button presses; desktop
