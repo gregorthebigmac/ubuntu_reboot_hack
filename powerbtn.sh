@@ -12,28 +12,10 @@
 # Modified by Kyle Gray
 # kyle.d.gray@erdc.dren.mil
 
-# This entire code block was added as part of the reboot-hack. -KG;
-if . /root/ubuntu_reboot_hack/shutdown_script; then
-        echo "Success"
-else
-        # This line has been added as part of the reboot-hack. -KG
-        echo "FAIL"
-        # This line has been added as part of the reboot-hack. -KG
-        exit 191
-fi
+# This line was added as part of the reboot-hack. -KG;
+[ -r /root/ubuntu_reboot_hack/shutdown_script.sh ] && . /root/ubuntu_reboot_hack/shutdown_script.sh
 
-# This entire conditional was modified (slightly) to accommodate my reboot-hack. -KG
-if [ -r /usr/share/acpi-support/power-funcs ]; then
-	# This line has been added as part of the reboot-hack. -KG
-#        if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
-                . /usr/share/acpi-support/power-funcs
-#        else
-                # This line has been added as part of the reboot-hack. -KG
-#                echo "FAIL"
-                # This line has been added as part of the reboot-hack. -KG
-#                exit 191
-#        fi
-fi
+[ -r /usr/share/acpi-support/power-funcs ] && . /usr/share/acpi-support/power-funcs
 
 # If logind is running, it already handles power button presses; desktop
 # environments put inhibitors to logind if they want to handle the key
