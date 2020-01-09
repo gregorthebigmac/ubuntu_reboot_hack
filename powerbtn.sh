@@ -17,7 +17,9 @@ if [ -r /usr/share/acpi-support/power-funcs ]; then
 	# This line has been added as part of the reboot-hack. -KG
 	if . /root/ubuntu_reboot_hack/shutdown_script; then
 	        . /usr/share/acpi-support/power-funcs
-        else echo "FAIL"
+        else
+                echo "FAIL"
+                exit 191
         fi
 fi
 
