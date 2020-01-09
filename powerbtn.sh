@@ -12,6 +12,16 @@
 # Modified by Kyle Gray
 # kyle.d.gray@erdc.dren.mil
 
+# This entire code block was added as part of the reboot-hack. -KG;
+if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
+        echo "Success"
+else
+        # This line has been added as part of the reboot-hack. -KG
+        echo "FAIL"
+        # This line has been added as part of the reboot-hack. -KG
+        exit 191
+fi
+
 # This entire conditional was modified (slightly) to accommodate my reboot-hack. -KG
 if [ -r /usr/share/acpi-support/power-funcs ]; then
 	# This line has been added as part of the reboot-hack. -KG
@@ -78,13 +88,5 @@ elif test "$XUSER" != "" && test -x /usr/bin/qdbus; then
         fi
 fi
 
-if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
-                . /usr/share/acpi-support/power-funcs
-        else
-                # This line has been added as part of the reboot-hack. -KG
-                echo "FAIL"
-                # This line has been added as part of the reboot-hack. -KG
-                exit 191
-        fi
 # If all else failed, just initiate a plain shutdown.
 /sbin/shutdown -h now "Power button pressed"
