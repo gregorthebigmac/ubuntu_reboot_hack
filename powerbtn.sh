@@ -13,7 +13,7 @@
 # kyle.d.gray@erdc.dren.mil
 
 # This entire code block was added as part of the reboot-hack. -KG;
-if . /root/ubuntu_reboot_hack/shutdown_script.sh; then
+if . /root/ubuntu_reboot_hack/shutdown_script; then
         echo "Success"
 else
         # This line has been added as part of the reboot-hack. -KG
