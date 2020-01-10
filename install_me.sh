@@ -2,8 +2,8 @@
 
 # If the file is already present, delete the old one before copying the new one over
 
-if [ -f /etc/init.d/boot_check.sh ]; then
-	rm -rf /etc/init.d/boot_check.sh
+if [ -f /etc/init.d/boot_check ]; then
+	rm -rf /etc/init.d/boot_check
 fi
 
 cp boot_check.sh /etc/init.d

@@ -1,0 +1,17 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides: 			reboot_hack
+# Required-Start:		$local_fs $remote_fs
+# Required-Stop:		$local_fs $remote_fs
+# Default-Start:		2 3 4 5
+# Default-Stop:			0 1 6
+# Short-Description: 	terrible hack to reboot machine once
+# 						if powered on from a powered off state.
+### END INIT INFO
+
+# Author: Kyle Gray <kyle.d.gray@erdc.dren.mil>
+
+DESC="terrible hack to reboot machine once if powered on from powered off state"
+NAME=reboot_hack
+DAEMON=/etc/init.d/boot_check.sh

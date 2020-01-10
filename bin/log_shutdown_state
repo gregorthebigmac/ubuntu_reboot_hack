@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "ACPI-SHUTDOWN" > /root/last_shutdown.stat

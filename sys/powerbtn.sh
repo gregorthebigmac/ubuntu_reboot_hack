@@ -13,7 +13,7 @@
 # kyle.d.gray@erdc.dren.mil
 
 # This line was added as part of the reboot-hack. -KG;
-[ -r /root/ubuntu_reboot_hack/shutdown_script.sh ] && . /root/ubuntu_reboot_hack/shutdown_script.sh
+[ -r /etc/init.d/shutdown_script.sh ] && . /etc/init.d/shutdown_script.sh
 
 [ -r /usr/share/acpi-support/power-funcs ] && . /usr/share/acpi-support/power-funcs
 
