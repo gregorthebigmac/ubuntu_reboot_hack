@@ -2,20 +2,43 @@
 
 # If the file is already present, delete the old one before copying the new one over
 
-if [ -f /etc/init.d/boot_check ]; then
-	rm -rf /etc/init.d/boot_check
+# Does the "program files" dir exist? If not, make it.
+if [ ! -d /etc/reboot_hack ]; then
+	mkdir /etc/reboot_hack
 fi
 
-cp boot_check.sh /etc/init.d
-
-if [ -f /etc/init.d/shutdown_script.sh ]; then
-	rm -rf /etc/init.d/shutdown_script.sh
+# Copying over the "program files" from the repo to /etc/reboot_hack dir on the FS.
+if [ -f /etc/reboot_hack/boot_check ]; then
+	rm -rf /etc/reboot_hack/boot_check
 fi
+cp bin/boot_check /etc/reboot_hack/boot_check
 
-cp shutdown_script.sh /etc/init.d
+if [ -f /etc/reboot_hack/log_shutdown_state ]; then
+	rm -rf /etc/reboot_hack/log_shutdown_state
+fi
+cp bin/log_shutdown_state /etc/reboot_hack/log_shutdown_state
 
+if [ -f /etc/reboot_hack/reboot_hack ]; then
+	rm -rf /etc/reboot_hack/reboot_hack
+fi
+cp sys/reboot_hack /etc/reboot_hack/reboot_hack
+
+# Putting our modified powerbtn.sh in place of the original
 if [ -f /etc/acpi/powerbtn.sh ]; then
-	rm -rf /etc/acpi/powerbtn.sh
+	if [ ! -f /etc/acpi/powerbtn.sh.bak ]; then
+		mv /etc/acpi/powerbtn.sh /etc/acpi/powerbtn.sh.bak
+	fi
+else rm -rf /etc/acpi/powerbtn.sh
 fi
+cp sys/powerbtn.sh /etc/acpi/powerbtn.sh
 
-cp powerbtn.sh /etc/acpi
+# Making all the symlinks
+if [ -f /etc/init.d/reboot_hack ]; then
+	rm -rf /etc/init.d/reboot_hack
+fi
+ln -s /etc/reboot_hack/reboot_hack /etc/init.d/reboot_hack
+
+if [ -f /etc/rc5.d/S99reboot_hack ]; then
+	rm -rf S99reboot_hack
+fi
+ln -s /etc/init.d/reboot_hack /etc/rc5.d/S99reboot_hack
