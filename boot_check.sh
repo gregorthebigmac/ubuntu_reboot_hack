@@ -31,7 +31,7 @@ if [ -f /root/ubuntu_reboot_hack/last_shutdown.stat ]; then
 		else exit 1
 		fi
 	elif [[ "$shutdown_stat" == "SOFT-REBOOT" ]]; then
-		exit 0;
+		exit 0
 	fi
 else
 	if cat "SOFT-REBOOT" > /root/ubuntu_reboot_hack/last_shutdown.stat; then
@@ -39,3 +39,4 @@ else
 	else exit 1
 	fi
 fi
+exit 0
