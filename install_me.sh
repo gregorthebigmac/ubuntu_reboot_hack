@@ -39,12 +39,12 @@ fi
 ln -s /etc/reboot_hack/reboot_hack /etc/init.d/reboot_hack
 
 if [ -f /etc/rc5.d/S99reboot_hack ]; then
-	rm -rf S99reboot_hack
+	rm -rf /etc/rc5.d/S99reboot_hack
 fi
 ln -s /etc/init.d/reboot_hack /etc/rc5.d/S99reboot_hack
 
 if [ -f /bin/boot_check ]; then
-	rm -rf boot_check
+	rm -rf /bin/boot_check
 fi
 ln -s /bin/boot_check /etc/reboot_hack/boot_check
 
