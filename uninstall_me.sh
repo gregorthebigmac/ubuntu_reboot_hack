@@ -2,12 +2,20 @@
 
 # Look for all files created by this program and remove them
 if [ -d /etc/reboot_hack ]; then
-	rm -rf /etc/reboot_hack
+	echo -n "Removing dir /etc/reboot_hack... "
+	if rm -rf /etc/reboot_hack; then
+		echo "[OK]"
+	else echo "[FAIL]"
+	fi
 fi
 
 # Restore powerbtn.sh from backup
 if [ -f /etc/acpi/powerbtn.sh.bak ]; then
-	mv /etc/acpi/powerbtn.sh.bak /etc/acpi/powerbtn.sh
+	echo -n "Restoring /etc/acpi/powerbtn.sh from backup... "
+	if mv /etc/acpi/powerbtn.sh.bak /etc/acpi/powerbtn.sh; then
+		echo "[OK]"
+	else echo "[FAIL]"
+	fi
 fi
 
 # All of these run without checks, because the -f fails if the link is broken.
