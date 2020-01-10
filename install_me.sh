@@ -36,7 +36,7 @@ cp sys/powerbtn.sh /etc/acpi/powerbtn.sh
 if [ -f /etc/init.d/reboot_hack ]; then
 	rm -rf /etc/init.d/reboot_hack
 fi
-ln -s /etc/reboot_hack/reboot_hack /etc/init.d/reboot_hack
+ln -s /bin/boot_check /etc/init.d/reboot_hack
 
 if [ -f /etc/rc5.d/S99reboot_hack ]; then
 	rm -rf /etc/rc5.d/S99reboot_hack
