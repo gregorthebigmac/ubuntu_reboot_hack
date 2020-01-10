@@ -14,4 +14,4 @@
 
 DESC="terrible hack to reboot machine once if powered on from powered off state"
 NAME=reboot_hack
-DAEMON=/etc/init.d/boot_check.sh
+DAEMON=/etc/init.d/reboot_hack
