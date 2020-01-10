@@ -46,9 +46,9 @@ ln -s /etc/init.d/reboot_hack /etc/rc5.d/S99reboot_hack
 if [ -f /bin/boot_check ]; then
 	rm -rf /bin/boot_check
 fi
-ln -s /bin/boot_check /etc/reboot_hack/boot_check
+ln -s /etc/reboot_hack/boot_check /bin/boot_check
 
 if [ -f /bin/log_shutdown_state ]; then
 	rm -rf /bin/log_shutdown_state
 fi
-ln -s /bin/log_shutdown_state /etc/reboot_hack/log_shutdown_state
+ln -s /etc/reboot_hack/log_shutdown_state /bin/log_shutdown_state
